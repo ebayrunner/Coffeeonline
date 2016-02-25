@@ -1,4 +1,4 @@
-The index.html is CoffeeOnline.html, that file alone has all of the external scripts to run the project.  
+The index.html has all of the external scripts to run the project.  
 In addition, there is a dependence on the jquery library for some functionality
 
 This project illustrates utilization of Javascript, HTML, CSS and the JQUERY library.  
