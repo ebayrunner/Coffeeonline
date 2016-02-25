@@ -76,7 +76,6 @@ function initMap(){
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                 };
-                console.log('from inside initMap', pos)
                 //since (navigator.geolocation) is asych, call whatEver after pos is determined.
                 whatEver(pos);
 
