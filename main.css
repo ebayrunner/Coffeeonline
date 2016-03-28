@@ -3,17 +3,17 @@
  */
 
 h1 {
-    font-size: 50px;
+    font-size: 35px;
     color:darkred;
     align-content: center;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 25px;
     color:darkred;
 }
 h3 {
-    font-size: 25px;
+    font-size: 15px;
     color: darkred;
 }
 
@@ -28,7 +28,7 @@ p {
 }
 label {
     font-size: 25px;
-    color:brown;
+    color: inherit;
 }
 .apiButtonLabel{
     display: block;
@@ -52,6 +52,9 @@ span {
 }
 
 
+
+/************************ START <section> elements **************************/
+
 #introduction{
     text-align: center;
     color: brown;
@@ -60,6 +63,16 @@ span {
     border: double;
     border-color: black;
     border-width: medium;
+}
+
+#customerLogin{
+    text-align: center;
+    color: purple;
+    margin: auto;
+    background-color: #ffcd96;
+    border-color: black;
+    border-width: thick;
+    font-size: 25px;
 }
 
 #orderForm {
@@ -72,6 +85,17 @@ span {
     display: block;
 }
 
+#api{
+
+
+}
+
+
+/************************  END <section> elements **************************/
+
+
+
+
 #orderSelection{
     margin: auto;
     width: 80%;
@@ -79,9 +103,6 @@ span {
     padding: 10px;
     font-size: 20px;
 
-}
-#orderSelection label{
-    font-size: 25px;
 }
 
 
@@ -179,3 +200,50 @@ span {
     border-width: medium;
 
 }
+
+
+
+
+//**********************************DropDown Hover Menu*****************************/
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 6px 10px;
+    font-size: 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+//************************END DropDown Hover Menu***************************************
