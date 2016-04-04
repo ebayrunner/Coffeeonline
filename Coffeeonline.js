@@ -1,417 +1,365 @@
 /**
  * Created by michaeluchida on 1/26/16.
  */
+//*****************************  Global Arrays and variables ***********************
+
+
+// an object containing name, lastOrders, cardBalance
+var customerData;
+// one of 5 objects from the drinkMenu array;
+var drinkObject;
+//one of 3 objects from the espressoShot array;
+var shotsObject;
+
+var totalPrice;
 
 var drinkMenu = [
-    {name: "Americano",
-        price: 2.75 },
-    {name: "Cappuchino",
-        price: 3.35},
-    {name: "Cubano",
-        price: 3.85},
-    {name: "Mexican Hot Chocolate",
-        price: 4.10},
-    {name: "Mocha",
-        price: 3.50}
-]
+    {name: "Americano", price: 2.75},
+    {name: "Cappuchino", price: 3.35},
+    {name: "Cubano", price: 3.85},
+    {name: "Mexican Hot Chocolate", price: 4.10},
+    {name: "Mocha", price: 3.50}
+];
 
-
-var espressoShot =[
-    {name: "one", price: 0.50},
-    {name:"two", price: 0.50},
-    {name: "three", price: 1.50}
-]
-
-var drinkMenuExtras= [
-    {name: "Whip Cream", price: 0.75},
-    {name: "Iced", price: 0.75},
-    {name: "Vanilla Syrup", price: 0.65}
-]
-
-
-
-
-
-
-
-
-//var drinkExtras = function(extras){
-//    //return drinkMenu price
-//    var extrasArray=[];
-//    //console.log("value", extras.value)
-//    extrasArray.push(drinkMenuExtras.find(function(item){
-//        if(item.name === extras.value){
-//            return item.price
-//        }
-//    }))
-//    console.log(extrasArray)
-//    //return extrasArray
-//    //console.log(extrasObject)
-//
-//}
-//sum espressoDrink + espressoShot + espressoDrinkExtras
-
-var drinkObject;
-var chosenDrink = function(drink){
-    //return drinkMenu price
-    //console.log("value", drink.value)
-    drinkObject =  drinkMenu.find(function(item){
-        if(item.name === drink.value){
-            return item.price
-        }
-    })
-    console.log(drinkObject)
-    return drinkObject
-
-    //console.log(drinkObject[0].name + drinkObject[0].price)
-
-}
-
-var shotsObject;
-var totalShots = function(shots){
-    //return drinkMenu price
-    //console.log("value", shots.value)
-    shotsObject =  espressoShot.find(function(item){
-        if(item.name === shots.value){
-            return item.price
-        }
-    })
-    console.log(shotsObject)
-    return shotsObject;
-}
-
-
-var calculateTotal = function(){
-if(!drinkObject){
-    return alert("Please chose a drink");
-}
-    if(!shotsObject){
-        return alert("Please choose the number of espresso Shots");
+var espressoShot = [
+    {name: "one", price: 0.50
+    },
+    {name: "two", price: 0.50
+    },
+    {name: "three", price: 1.50
     }
-//    console.log("drinkObject from inside total",drinkObject)
-//console.log("shotsObject from inside total", shotsObject)
+];
 
-    var arrayOfObject = [drinkObject,shotsObject]
-
-    var totalPrice = arrayOfObject.reduce(function(sum, item){
-        return sum + item.price;
-    },0)
-
-///use reduce to iterate through the three objects for the price
-    var divobject = document.getElementById("total");
-    //divobject.innerHTML = "You've ordered a "+ drinkObject.name + " with "
-    //+ shotsObject.name + " shot(s) of espresso for a total price of $"+ totalPrice
-    divobject.innerHTML = "$"+totalPrice
-
-}
-var clearButton = function() {
-    var ele = document.getElementsByName("radButton");
-    for (var i = 0; i < ele.length; i++)
-        ele[i].checked = false;
-    document.getElementById("total").innerText = ""
-};
-
-var checkOut = function(){
-
-
-}
-
-
-//console.log(allDrinks);
-/// *************** find
-//console.log(drinkMenu.find(function(item){
-//    return item.name==="Americano"
-//}))
-
-//console.log(drinkMenu.filter(function(item){
-//    return item.name ==="Americano";
-//}))
-
-    var customerInfo = [
+//a record of existing customer records: lastOrders, cardBalance;
+var customerInfo = [
     {name: "Sleepy",
-        lastOrders: ["Mocha with Two Shots", "Triple shot Americano with vanilla flavoring & cream","Triple shot Cubano"],
+        lastOrders: [
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+            {name: "Mocha", numberOfShots: 3, price: 5.00
+            },
+            {name: "Mexican Hot Chocolate", numberOfShots: 1, price: 4.60
+            },
+            {name: "Cappuchino", numberOfShots: 2, price: 4.35
+            },
+            {name: "Cubano", numberOfShots: 2, price: 4.85
+            }
+        ],
         cardBalance: 14.00,
     },
 
     {name: "Doc",
-    lastOrders: ["Double shot cubano with ice", 8],
-        cardBalance: 0.80
+        lastOrders: [
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+            {name: "Mocha", numberOfShots: 3, price: 5.00
+            },
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+            {name: "Mexican Hot Chocolate", numberOfShots: 1, price: 4.60
+            },
+            {name: "Cubano", numberOfShots: 2, price: 4.85
+            },
+            {name: "Cappuchino", numberOfShots: 2, price: 4.35
+            }
+        ],
+        cardBalance: 7.50
     },
     {name: "Sneezy",
-        lastOrders: ["Single shot mocha  with allegra"],
+        lastOrders: [
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+            {name: "Cappuchino", numberOfShots: 2, price: 4.35
+            },
+            {name: "Cubano", numberOfShots: 2, price: 4.85
+            }
+        ],
         cardBalance: 7.35
     },
     {name: "Bashful",
-        lastOrders: ["Double shot latte with whole milk"],
+        lastOrders: [
+            {name: "Cappuchino", numberOfShots: 2, price: 4.35
+            },
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+            {name: "Cubano", numberOfShots: 2, price: 4.85
+            },
+            {name: "Cappuchino", numberOfShots: 2, price: 4.35
+            }
+        ],
         cardBalance: 10.80
     },
     {name: "Hopeful",
-        lastOrders: ["Triple Americano with vanilla flavoring and cream"],
+        lastOrders: [
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+            {name: "Cubano", numberOfShots: 2, price: 4.85
+            },
+            {name: "Americano", numberOfShots: 2, price: 4.50
+            },
+        ],
         cardBalance: 25.00
-    },
-    {name: "Create an Account",
-        lastOrders: [],
-        cardBalance: 0
     }
-]
-
-//******************************underscore functions***********************
-
-var each=function(collection, iterator){
-    //each does not have a return value, just applys the iterator to some arguments
-    //test whether collection is an object or array
-    //iterate over entire collection
-    if(collection.length===undefined) {
-        for (var key in collection) {
-            iterator(collection[key], key, collection);
-        }
-    }
-
-    else{
-        for(var i=0;i<collection.length;i++){
-            iterator(collection[i],i,collection);
-        }
-    }
-
-};
-var filter = function(collection,test){
-    //create an empty array truthyElements - elements that path a truth test
-    //will be pushed in to this array
-    //iterate over collection using _.each
-    //return truthyElements
-
-    var truthyElements =[];
-
-    each(collection,function(value){
-        if(test(value)){
-            truthyElements.push(value);
-        }
-    });
-    return truthyElements;
-};
-
-var map = function(collection,iterator){
-    //create an empty array
-    //after applying the iterator to each elements,
-    //push the new value into results
-    var results = [];
-    each(collection,function(value,key,collection){
-        results.push(iterator(value,key,collection));
-    });
-    return results
-};
-
-var reduce = function(collection, iterator, accumulator){
-    var thirdArgument = arguments.length===2;
+];
 
 
-    each(collection, function(item) {
-        if (thirdArgument) {
-            accumulator = item;
-            thirdArgument=false
-
-        }
-        else {
-            accumulator = iterator(accumulator,item);
-        }
-    });
-    //returns a single value
-    return accumulator;
-};
-
- //*******************End of underscore functions **************
-
-//Two Global variable - user, customerData
-//user name;
-var user;
-
-//an array containing name, previous orders
-var customerData;
+//*****************************  END Global Arrays and variables ***********************
 
 
 
 
-
-
+//assigns the customerData object to the returning user
 var returningCustomer= function(){
     user = (document.getElementById("welcomeCustomer")).value;
     customerData = customerInfo.find(function(item){
         return item.name ===user;
     })
-    console.log(customerData)
     welcomeMessage(customerData);
 }
 
 
-//creates a new customer account and automatically loads zoom card with $10.00
+//creates a new customerData objec
 var createNewAccount = function(){
-    alert("Create and account and we will place $10.00 on your Zoom Card")
-    var newObj = {}
-    var name = prompt("Enter your Name(no spaces)")
-    //if user has spaces - recursively call newCustomerData
+    alert("Create an account and we will place $10.00 on your Zoom Card")
+    var newObj = {};
+    var name = prompt("Enter your Name");
     newObj.name = name;
     newObj.cardBalance = 10.00;
-    newObj.lastOrders = null
-    //add customer info to customerInfo
-    console.log(newObj,"newObj")
-    customerInfo.push(newObj);
-    console.log(customerInfo);
+    newObj.lastOrders = 'null';
     customerData = newObj;
     welcomeMessage(customerData);
 }
 
 
-//displays a welcome message including name, last 3 orders, and Zoom card balance
+//displays a welcome message including name, lastOrders, and Zoom card balance
 var welcomeMessage = function(customerData) {
-    //returning customer - display last orders and offer options to select past order or choose a new drink
-    var divobject = document.getElementById("welcomeMessage");
-    divobject.innerHTML = "Welcome " + customerData.name +","+
-     " your Zoom card has a balance of $"+ customerData.cardBalance+". "+
-            "Your last orders include: " + customerData.lastOrders
+    document.getElementById('returningOrNew').innerHTML = "";
 
-    if(customerData.lastOrders){
-        var somedivobject = document.getElementById("lastOrders");
-        var lastOrders = customerData.lastOrders.map(function(item){
-            return item;
-        })
-        somedivobject = lastOrders;
+    if(customerData.lastOrders === "null"){
+        var divobject = document.getElementById("welcomeMessage");
+        divobject.innerHTML = "Welcome " + customerData.name + "," +
+            " your Zoom card has a balance of $" + customerData.cardBalance.toFixed(2);
+
     }
-
-
+    var summaryOfOrders = customerData.lastOrders.map(function (item) {
+        return  item.name + " with " + item.numberOfShots + " shot(s) of espresso, $" + item.price.toFixed(2)+" ";
+    })
+    var divobject = document.getElementById("welcomeMessage");
+        divobject.innerHTML = "Welcome " + customerData.name + "," +
+            " your Zoom card has a balance of $" + customerData.cardBalance.toFixed(2) + ". "
+    var summaryObject = document.getElementById("lastOrders");
+    summaryObject.innerHTML = "Your last orders include: " + summaryOfOrders;
 };
 
+//creates the drinkObject
+var chosenDrink = function(drink){
+    drinkObject =  drinkMenu.find(function(item){
+        if(item.name === drink.value){
+            return item.price.toFixed(2);
+        }
+    })
+    return drinkObject;
+};
 
+//creats the shotsObject
+var totalShots = function(shots){
+    shotsObject =  espressoShot.find(function(item){
+        if(item.name === shots.value){
+            return item.price.toFixed(2);
+        }
+    })
+    return shotsObject;
+};
+//calculates total before checkout
+var calculateTotal = function() {
 
-//var clicked(){
-//    console.log("i've been clicked");
-//};
+    if (!drinkObject) {
+        return alert("Please Choose A Drink")
+    }
+    if (!shotsObject) {
+        return alert("Please Choose The Number of Espresso Shots")
+    }
+    var arrayOfObject = [drinkObject, shotsObject];
+    totalPrice = arrayOfObject.reduce(function (sum, item) {
+        return sum + item.price;
+    }, 0)
+    alert("Here is your total $" + totalPrice.toFixed(2))
+};
+//resets drinkObject and shotsObject
+var clearButton = function () {
+    var ele = document.getElementsByName("radButton");
+    for (var i = 0; i < ele.length; i++)
+        ele[i].checked = false;
+    document.getElementById('total').innerText = ""
+    drinkObject = null;
+    shotsObject = null;
+
+};
+//runs tests to see if the the customerData, drinkObject, shotsObject exist. finally returns a confirmation of order
+var finalCheckOut = function () {
+    if (!customerData) {
+        return alert("Please enter your customer name or create an account");
+    }
+    if (!drinkObject || !shotsObject) {
+        return alert("Please choose a drink and the number of espresso shots");
+    }
+    document.getElementById("orderSelection").innerText = "";
+    document.getElementById("costSection").innerText = "";
+    var divobject = document.getElementById("orderSelection");
+    if (!customerData) {
+        return alert("Please enter a customer name or enter a new name");
+    }
+    var arrayOfObject = [drinkObject, shotsObject]
+    totalPrice = arrayOfObject.reduce(function (sum, item) {
+        return sum + item.price;
+    }, 0);
+    divobject.innerHTML = "Hi " + customerData.name + ", you've ordered a " + drinkObject.name + " with "
+        + shotsObject.name + " shot(s) of espresso."
+        + "  $" + (drinkObject.price + shotsObject.price).toFixed(2) + " has been deducted from your Zoom card" +
+        " and your new balance is $" + (customerData.cardBalance - totalPrice).toFixed(2) + ".  Your drink will be ready when you get here."
+    }
+
 
 
 //******************************************* API ******************************************
 
+//finds geolocation of user based on mac address or cell towers
+function findLocation() {
 
-//The Google Maps Geolocation API returns a location and accuracy radius
-// based on information about cell towers and WiFi nodes that the mobile client can detect.
-function initMap(){
     var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13
-        });
-            //hide the div until the map is rendered
-            $(function () {
-                $("#api_wrapper").show()
+        zoom: 13
+    });
+    var infoWindow = new google.maps.InfoWindow({map: map});
 
-            });
-        //infoWindo is the pop-up window indicating latitude and longitude and arrow pointing to rendered map
-        var infoWindow = new google.maps.InfoWindow({map: map});
-
-        // navigator.geolocation determines geo location via data collection mechanisms like the ip of a wifi router, cell tower, etc
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var pos = {
+    // navigator.geolocation determines geo location via data collection mechanisms like the ip of a wifi router, cell tower, etc
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
-                };
-                console.log('from inside initMap', pos)
-                //since (navigator.geolocation) is asych, call whatEver after pos is determined.
-                whatEver(pos);
-
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Here is your location. Your latitude is ' + pos.lat.toFixed(4) + ' and your logitude is ' + pos.lng.toFixed(4));
-                map.setCenter(pos);
+            };
+            infoWindow.setPosition(pos);
+            map.setCenter(pos);
+            initializePlaceSearchMap(pos);
             }, function () {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
+    } 
+    else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
     }
+};
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
+    infoWindow.setContent(browserHasGeolocation ? 
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
 }
-//google.maps.event.addDomListener(window, "load", initialize);
+
+var map;
+var infowindow;
+var cafeListing;
+
+function initializePlaceSearchMap(coordinates) {
+    var myLocation = coordinates;
+    apiWrapper.style.display = "block";
+    map = new google.maps.Map(document.getElementById('apiWrapper'), {
+        center: myLocation,
+        zoom: 14
+    });
+
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+            location: myLocation,
+            radius: 2500,
+            keyword: ['cafe']
+    }, callback);
+    var cafeListing = service.nearbySearch;
+};
 
 
-    //this function, with the geolocation coordinates from initMap, makes a JSON request to OpenWeatherMap API.  A JSON file is returned
-    function whatEver(coordinates) {
-        //convert the argument to a format that will work with the api request
-        var latitude = coordinates.lat;
-        var longitude = coordinates.lng;
-        var text = "http://api.openweathermap.org/data/2.5/weather?units=imperial&appid=7534f5fab6676373430402880c728290&";
-        var addCoordinates = "lat=" + latitude + "&lon=" + longitude;
-        var weatherObject = document.getElementById("weatherInfo");
-        //make the ajax call to the API
-        $(function(){
-            $.getJSON(text + addCoordinates,
-                function (data) {
-                    //present to the user the raw JSON file
-                    weatherObject.innerHTML = JSON.stringify(data)
-                    var sortWeather = document.getElementById("sorted_weather");
-                    //present to the user a simple illustration of key:value pairs from the object
-                    sortWeather.innerHTML = "The temperature in " + data.name + " is " + data.main.temp + " degrees, " + " barometric temperature is "
-                        + data.main.pressure + "mmHg, " + " and humidity is " + data.main.humidity + " %."
-                })
-        })
+function callback(results, status) {
+    var cafeListing = results
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        results.map(function(item){
+            createMarker(item);
+        });
     }
+    cafeDetails(results);
+};
 
-//******************************************* API ******************************************
 
+function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location
+    });
+    google.maps.event.addListener(marker, 'click', function () {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+    });
+}
 
-//************************************Former Code in v1**************************************
-////onChange, contains three callback functions
-//var calculateTotal = function(){
-//    var totalCost = insidedrinkMenu() + insideEspressoShot() + ice();
-//    //assign the reference to the Element object
-//    var divobject = document.getElementById("grandTotal");
-//    divobject.innerHTML = "$"+totalCost.toFixed(2);
-//};
+function cafeDetails (details){
+    console.log("inside cafeDetails" + details)
+    //var cafeObject  = document.getElementById("displayCafeInfo");
+    ///*window.onload = function(){
+    //    cafeObject.innerHTML = "hello"
+    //}*/
+    ////cafeObject.innerHTML = details.map(function(item, index){
+    ////    return ((index+1)+"."+item.name +" @ "+ item.vicinity+" "+ " rating "+item.rating)
+    ////})
+    cafeListing = details;
+}
+
+//var filterFunction  = function(value){
+//    //console.log("inside filterFunction")
+//    var stars = (document.getElementById("filteredResults")).value;
+//    //console.log("cafeListing" + cafeListing)
+//    var filterResults = cafeListing.filter(function(item){
+//        return item.rating > stars;
+//    })
 //
-//var insidedrinkMenu = function(){
-//    var priceOfDrink;
-//    //assign the reference to the Element object
-//    var whatDrink= document.getElementById("whatDrink")
-//    //looks up the drinkMenu object on Price.js
-//    priceOfDrink= drinkMenu[whatDrink.value]
-//    //returns the price of the drink to calculateTotal
-//    return priceOfDrink;
-//};
-//
-//
-//var insideEspressoShot = function(){
-//    var totalShots =0;
-//    //assign the reference to the Element object
-//    var numberOfShots= document.getElementById("numberOfShots")
-//    //looks up the howManyShots object on Price.js
-//    totalShots = howManyShots[numberOfShots.value];
-//    //returns the price of the shots to calculateTotal
-//    return totalShots;
-//};
-//
-//var cupSize = function(){
-//
-//    var ounceCup=0;
-//    //var theForm = document.forms["coffeeOrderForm"];
-//    var selectedCup = document.getElementById("sizeOfCup");
-//    //there is no price difference for cup size so no price lookup;
-//    var divobject = document.getElementById('cupPrice');
-//    divobject.innerHTML = selectedCup.value;
-//    //the value of ounceCup is returned to calculateTotal
-//    return selectedCup.value;
-//};
-//
-//var ice= function(){
-//    var icePrice=0;
-//    //assign te reference to the Element object
-//    var iceChoice = document.getElementById("icedDrink");
-//    //A simple boolean. if true add $.75, if false icePrice = 0;
-//    if(iceChoice.checked){
-//        icePrice = 0.75;
-//    }
-//    return icePrice;
+//    var displayedResults = filterResults.map(function(item){
+//        return item.name + item.vicinity + item.rating
+//    })
+//    console.log(displayedResults);
 //}
 
-//********************************* End of Former Code in v1 ****************************
+var filterFunction  = function(value){
+    //console.log("inside filterFunction")
+    var stars = (document.getElementById("filteredResults")).value;
+    //console.log("cafeListing" + cafeListing)
+    var filterResults = _.sortBy(cafeListing, function(item){
+        return item.rating;
+    })
+
+    var final = filterResults.reverse().map(function(item, index){
+        return ((index +1)+" "+item.name + " "+item.vicinity+" "+ item.rating)
+    })
+    console.log(final);
+    //var displayedResults = filterResults.map(function(item){
+    //    return item.name + item.vicinity + item.rating
+    //})
+    //console.log(displayedResults);
+}
+
+
+
+
+
+/*var returningCustomer= function(){
+ user = (document.getElementById("welcomeCustomer")).value;
+ customerData = customerInfo.find(function(item){
+ return item.name ===user;
+ })
+ welcomeMessage(customerData);
+ }*/
+
+
+
+

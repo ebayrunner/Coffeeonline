@@ -30,13 +30,15 @@ label {
     font-size: 25px;
     color: inherit;
 }
-.apiButtonLabel{
-    display: block;
-    text-align: center;
-    line-height: 150%;
-    font-size: 1em;
 
-}
+
+/*.apiButtonLabel{*/
+    /*display: block;*/
+    /*text-align: center;*/
+    /*line-height: 150%;*/
+    /*font-size: 1em;*/
+
+/*}*/
 
 span {
     color: blue;
@@ -53,27 +55,68 @@ span {
 
 
 
-/************************ START <section> elements **************************/
+/************************  <section> elements **************************/
+#bodyContent {
+    background-color: #ffda58;
+    
+}
 
-#introduction{
+#introduction, #customerLogin, #welcomeMessage, #orderForm, #api {
+    margin: auto;
+    width: 80%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+
+
+
+}
+
+
+
+#introduction {
     text-align: center;
     color: brown;
     margin: auto;
     background-color: #ffcd96;
     border: double;
     border-color: black;
-    border-width: medium;
+    border-width: thin;
 }
+
+/*************************************** #introduction child elements **************************/
+
+
+/*************************************** END #introduction child elements **************************/
 
 #customerLogin{
     text-align: center;
     color: purple;
+    height: 100px;
     margin: auto;
     background-color: #ffcd96;
     border-color: black;
-    border-width: thick;
-    font-size: 25px;
+    border-width: thin;
+    font-size: 15px;
 }
+
+/*************************************** #customerLogin child elements **************************/
+
+#welcomeMessage {
+    align-content: center;
+    font-size: 20px;
+
+}
+
+
+
+/*#grandTotal{*/
+    /*font-size: 30px;*/
+    /*color: red;*/
+
+/*}*/
+
+
+/*************************************** END #customerLogin child elements **************************/
 
 #orderForm {
     text-align: center;
@@ -81,20 +124,11 @@ span {
     margin: auto;
     border: double;
     border-color: black;
-    border-width: medium;
+    border-width: thin;
     display: block;
 }
 
-#api{
-
-
-}
-
-
-/************************  END <section> elements **************************/
-
-
-
+/*************************************** #orderForm child elements **************************/
 
 #orderSelection{
     margin: auto;
@@ -105,6 +139,13 @@ span {
 
 }
 
+#lastOrders  {
+    font-size: 15px;
+    margin: auto;
+    width: 66%;
+    list-style-type: disc;
+}
+
 
 #costSection {
     text-align: center;
@@ -112,56 +153,74 @@ span {
     margin: auto;
     background-color: #ffcd96;
     border-color: black;
-    border-width: medium;
+    border-width: thin;
     font-size: 25px;
 }
 
-#grandTotal{
-    font-size: 30px;
-    color: red;
+#finalCheckOut{
+    text-align: center;
+    height: 100px;
+    color: brown;
+    margin: auto;
+    background-color: #ffcd96;
+    border: double;
+    border-color: black;
+    border-width: thin;
+}
+
+#goodByeMessage {
+    text-align: center;
+    height: 50px;
+    color: blue;
+    margin: auto;
+    background-color: lightblue;
+    border: double;
+    border-color: black;
+    border-width: thin;
+}
+
+/*************************************** END #orderForm child elements **************************/
+#api{
+
+    text-align: center;
+    background-color: aliceblue;
+    margin: auto;
+    border: double;
+    border-color: black;
+    border-width: thin;
+    display: block;
 
 }
 
-#mapbutton{
-    align-content: center;
-}
+/*************************************** #api child elements **************************/
 
-
-#api_wrapper{
-        width: 100%;
-        height: 250px;
+#apiWrapper{
+    display: none;
+    width: 100%;
+    height: 200px;
     background-color:  aliceblue;
-        }
+}
+
+#initMapButton {
 
 
-
-    #map {
-        width: 49.5%;
-        height: 100%;
-        background-color: darkorchid;
-        float: left;
-        }
-    #weather_section{
-        width: 49.5%;
-        height: 100%;
-        background-color: antiquewhite;
-        float: right;
-        }
-
-         #weatherInfo {
-            font-size: 13px;
-            height: 40%;
-            background-color: antiquewhite;
-            width: 100%;
-            }
+}
 
 
-         #sorted_weather{
-        font-size: 20px;
-             height: auto;
-             width: 100%;
-            background-color: antiquewhite;
-            }
+#displayCafeInfo {
+    font-size: 13px;
+    height: 40%;
+    background-color: antiquewhite;
+    width: 100%;
+
+}
+
+
+/*************************************** END #api child elements **************************/
+
+/************************  END <section> elements **************************/
+
+
 
 
 #aboutUs {
@@ -204,46 +263,3 @@ span {
 
 
 
-//**********************************DropDown Hover Menu*****************************/
-
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 6px 10px;
-    font-size: 15px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-//************************END DropDown Hover Menu***************************************
