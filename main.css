@@ -32,14 +32,6 @@ label {
 }
 
 
-/*.apiButtonLabel{*/
-    /*display: block;*/
-    /*text-align: center;*/
-    /*line-height: 150%;*/
-    /*font-size: 1em;*/
-
-/*}*/
-
 span {
     color: blue;
     font-size: 40px;
@@ -61,13 +53,11 @@ span {
     
 }
 
-#introduction, #customerLogin, #welcomeMessage, #orderForm, #api {
+#introduction, #customerLogin, #orderForm, #api {
     margin: auto;
     width: 80%;
     border: 3px solid #73AD21;
     padding: 10px;
-
-
 
 }
 
@@ -104,28 +94,19 @@ span {
 #welcomeMessage {
     align-content: center;
     font-size: 20px;
-
+    color: black;
 }
-
-
-
-/*#grandTotal{*/
-    /*font-size: 30px;*/
-    /*color: red;*/
-
-/*}*/
-
 
 /*************************************** END #customerLogin child elements **************************/
 
 #orderForm {
+    display: none;
     text-align: center;
     background-color: #ffcd96;
     margin: auto;
     border: double;
     border-color: black;
     border-width: thin;
-    display: block;
 }
 
 /*************************************** #orderForm child elements **************************/
@@ -201,18 +182,20 @@ span {
     background-color:  aliceblue;
 }
 
-#initMapButton {
-
-
-}
-
-
 #displayCafeInfo {
-    font-size: 13px;
+    display: none;
+    font-size: 18px;
     height: 40%;
     background-color: antiquewhite;
     width: 100%;
 
+}
+
+#displayFilteredResults{
+    font-size: 16px;
+    height: 40%;
+    background-color: antiquewhite;
+    width: 100%;
 }
 
 
@@ -223,42 +206,7 @@ span {
 
 
 
-#aboutUs {
-    text-align: center;
-    color: black;
-    margin: 0px;
-    width: 100%;
-    background-color: #ffe2a8;
-    border:double;
-    border-color: black;
-    border-width: medium;
-    font-size: 25px;
 
-}
-
-#bottomOfPage{
-    text-align: center;
-    height: inherit;
-    color: brown;
-    margin: auto;
-    background-color: #ffcd96;
-    border: double;
-    border-color: black;
-    border-width: medium;
-
-}
-
-#bottomOfInfoPage{
-    text-align: center;
-    height: 600px;
-    color: brown;
-    margin: auto;
-    background-color: #ffcd96;
-    border: double;
-    border-color: black;
-    border-width: medium;
-
-}
 
 
 

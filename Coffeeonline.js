@@ -114,7 +114,9 @@ var returningCustomer= function(){
     customerData = customerInfo.find(function(item){
         return item.name ===user;
     })
+    orderForm.style.display = "block";
     welcomeMessage(customerData);
+
 }
 
 
@@ -127,6 +129,7 @@ var createNewAccount = function(){
     newObj.cardBalance = 10.00;
     newObj.lastOrders = 'null';
     customerData = newObj;
+    orderForm.style.display = "block";
     welcomeMessage(customerData);
 }
 
@@ -134,15 +137,13 @@ var createNewAccount = function(){
 //displays a welcome message including name, lastOrders, and Zoom card balance
 var welcomeMessage = function(customerData) {
     document.getElementById('returningOrNew').innerHTML = "";
-
     if(customerData.lastOrders === "null"){
         var divobject = document.getElementById("welcomeMessage");
-        divobject.innerHTML = "Welcome " + customerData.name + "," +
+        return divobject.innerHTML = "Welcome " + customerData.name + "," +
             " your Zoom card has a balance of $" + customerData.cardBalance.toFixed(2);
-
     }
     var summaryOfOrders = customerData.lastOrders.map(function (item) {
-        return  item.name + " with " + item.numberOfShots + " shot(s) of espresso, $" + item.price.toFixed(2)+" ";
+        return  "  "+item.name + " with " + item.numberOfShots + " shot(s) of espresso, $" + item.price.toFixed(2)+"  ";
     })
     var divobject = document.getElementById("welcomeMessage");
         divobject.innerHTML = "Welcome " + customerData.name + "," +
@@ -217,8 +218,7 @@ var finalCheckOut = function () {
         + shotsObject.name + " shot(s) of espresso."
         + "  $" + (drinkObject.price + shotsObject.price).toFixed(2) + " has been deducted from your Zoom card" +
         " and your new balance is $" + (customerData.cardBalance - totalPrice).toFixed(2) + ".  Your drink will be ready when you get here."
-    }
-
+}
 
 
 //******************************************* API ******************************************
@@ -265,6 +265,8 @@ var cafeListing;
 function initializePlaceSearchMap(coordinates) {
     var myLocation = coordinates;
     apiWrapper.style.display = "block";
+    displayCafeInfo.style.display = "block";
+    findLocationButton.style.display = "none"
     map = new google.maps.Map(document.getElementById('apiWrapper'), {
         center: myLocation,
         zoom: 14
@@ -291,8 +293,9 @@ function callback(results, status) {
     cafeDetails(results);
 };
 
-
+//creates the teardrop marker
 function createMarker(place) {
+
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         map: map,
@@ -303,62 +306,34 @@ function createMarker(place) {
         infowindow.open(map, this);
     });
 }
-
+//places the array of objects with cafe info in the global space
 function cafeDetails (details){
-    console.log("inside cafeDetails" + details)
-    //var cafeObject  = document.getElementById("displayCafeInfo");
-    ///*window.onload = function(){
-    //    cafeObject.innerHTML = "hello"
-    //}*/
-    ////cafeObject.innerHTML = details.map(function(item, index){
-    ////    return ((index+1)+"."+item.name +" @ "+ item.vicinity+" "+ " rating "+item.rating)
-    ////})
     cafeListing = details;
 }
 
-//var filterFunction  = function(value){
-//    //console.log("inside filterFunction")
-//    var stars = (document.getElementById("filteredResults")).value;
-//    //console.log("cafeListing" + cafeListing)
-//    var filterResults = cafeListing.filter(function(item){
-//        return item.rating > stars;
-//    })
-//
-//    var displayedResults = filterResults.map(function(item){
-//        return item.name + item.vicinity + item.rating
-//    })
-//    console.log(displayedResults);
-//}
 
+//allows user to filter the results based on rating
 var filterFunction  = function(value){
-    //console.log("inside filterFunction")
-    var stars = (document.getElementById("filteredResults")).value;
-    //console.log("cafeListing" + cafeListing)
-    var filterResults = _.sortBy(cafeListing, function(item){
-        return item.rating;
-    })
 
-    var final = filterResults.reverse().map(function(item, index){
-        return ((index +1)+" "+item.name + " "+item.vicinity+" "+ item.rating)
+    var divobject = document.getElementById("displayFilteredResults")
+    var stars = parseInt((document.getElementById("filteredResults")).value);
+    var filterResults = _.sortBy(cafeListing, function(item){
+        return item.rating
     })
-    console.log(final);
-    //var displayedResults = filterResults.map(function(item){
-    //    return item.name + item.vicinity + item.rating
-    //})
-    //console.log(displayedResults);
+    var final = filterResults.reverse().filter(function(item){
+        if( item.rating >= stars && item.rating < stars + 1){
+        return item;
+        }
+    })
+    if(final.length === 0) {
+        return divobject.innerHTML ="No results found"
+    }
+    var display = final.map(function(item, index){
+        return ("  Rating "+item.rating +" "+item.name+" "+item.vicinity)
+    })
+    divobject.innerHTML = display;
 }
 
-
-
-
-
-/*var returningCustomer= function(){
- user = (document.getElementById("welcomeCustomer")).value;
- customerData = customerInfo.find(function(item){
- return item.name ===user;
- })
- welcomeMessage(customerData);
- }*/
 
 
 

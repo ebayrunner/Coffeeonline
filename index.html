@@ -13,20 +13,13 @@
 </head>
     <body id ="bodyContent">
     <section id="introduction">
-
             <h2>We are a provider of Order-ahead coffee.</h2>
         <h1>Cafe Zoom</h1>
             <h3>Place your order and we'll have it ready and waiting in our Drive thru.</h3>
-
     </section>
-
-
     <section id = "customerLogin">
-
 <div id="returningOrNew">
-
     <form>
-
         <label>Returning Customer?</label>
         <select  id="welcomeCustomer"  class="orderMenu"
                  onchange="returningCustomer()">
@@ -37,39 +30,21 @@
             <option value="Bashful">Bashful</option>
             <option value="Hopeful">Hopeful</option>
         </select>
-
-
     </form>
     <form>
-
         <label> Create An Account</label>
         <input TYPE="button"  onClick="createNewAccount()" VALUE="Create An Account">
     </form>
-
-
 </div>
-
             <div id="welcomeMessage"></div>
-
-
             <div id="lastOrders"></div>
-
-
     </section>
-
     <section id="orderForm">
         <div id="orderSelection">
         <label>Build Your Drink</label>
-
-
 <!--5 pulldown menue that assign the customer choice to a dollar value.
   There is the price of the base drink with one shot, that price is unique amongst all drinks.
   And then the cost of additional radButton is fixed-->
-
-<script>
-
-
-</script>
 
             <form>
                 <input type="radio"  name="radButton"  onclick="chosenDrink(this)" value="Americano">Americano<br>
@@ -78,84 +53,42 @@
                 <input type="radio" name="radButton" onclick="chosenDrink(this)"  value="Mexican Hot Chocolate">Mexican Hot Chocolate<br>
                 <input type="radio" name="radButton" onclick="chosenDrink(this)"  value="Mocha">Mocha
             </form>
-
-
         <form>
                 <input type="radio" name="radButton" onclick="totalShots(this)" value="one" >One Shot<br>
                 <input type="radio" name="radButton" onclick="totalShots(this)" value="two">Two Shots<br>
                 <input type="radio" name="radButton" onclick="totalShots(this)" value="three">Three Shots
         </form>
-
-
-<script>
-
-
-</script>
-
-
-
     </div>
-
-
-
     <div id="costSection">
-
         <div id="total"  class="total"></div>
              <input type="button" onclick= "calculateTotal()" value="Calculate Order">
             <input type="button" onclick="clearButton()" value="Reset Drink Order">
             <input type="button" onclick="finalCheckOut()" value="Proceed to checkout">
-
     </div>
 
-        <script>
-
-
-        </script>
-
     </section>
-
-
-
-
-
-
     <section id="api">
-
-        <input type ="button"  onclick="findLocation()" value = "Click and see the cafes in your area">
-
+        <input type ="button"  id = "findLocationButton" onclick="findLocation()" value = "Click and see the cafes in your area">
         <div id="apiWrapper">
-
             <div id="map"></div>
-
         </div>
-
-        <div id="displayCafeInfo">Here is a listing of results.  You can filter your results
-
+        <div id="displayCafeInfo">
             <form>
 
-                <label>Filter Your Results</label>
+                <label>Rating Filter</label>
                 <select  id="filteredResults"  class="orderMenu"
                          onchange="filterFunction(value)">
                     <option value="None">Rating</option>
-                    <option value="4"> >4 </option>
-                    <option value="3"> >3 </option>
-                    <option value="2"> >2 </option>
-                    <option value="1"> >1 </option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
                 </select>
 
 
             </form>
-
         </div>
-
-
-
-
+<div id = "displayFilteredResults"></div>
     </section>
-
-
 </body>
 </html>
-
-
-
